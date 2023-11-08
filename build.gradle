@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.1.5'
+    id 'io.spring.dependency-management' version '1.1.3'
+}
+
+group = 'com.luckykuang'
+version = '1.0.0-SNAPSHOT'
+
+java {
+    sourceCompatibility = '17'
+}
+
+repositories {
+    mavenLocal()
+    maven { url 'https://repo.spring.io/milestone' }
+    maven { url "https://maven.aliyun.com/repository/central" }
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.apache.commons:commons-collections4:4.4'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    compileOnly 'com.mysql:mysql-connector-j:8.0.32'
+    implementation 'com.baomidou:mybatis-plus-boot-starter:3.5.4.1'
+
+    testCompileOnly 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'com.baomidou:mybatis-plus-boot-starter:3.5.4.1'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+// 编译编码为UTF-8
+tasks.withType(JavaCompile).configureEach {
+    it.options.encoding = "UTF-8"
+}
