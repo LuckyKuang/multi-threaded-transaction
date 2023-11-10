@@ -40,7 +40,7 @@ public class UserController {
         return userService.getUserList();
     }
 
-    @PostMapping("save")
+    @PostMapping("save1")
     public String save(@RequestBody List<User> users) throws SQLException {
         userService.saveUsersByInvokeAll(users);
         return "success";

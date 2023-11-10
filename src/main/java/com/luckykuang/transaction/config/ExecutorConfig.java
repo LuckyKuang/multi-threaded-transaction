@@ -16,6 +16,8 @@
 
 package com.luckykuang.transaction.config;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -25,6 +27,7 @@ import java.util.concurrent.TimeUnit;
  * @author luckykuang
  * @date 2023/11/7 11:32
  */
+@Slf4j
 public class ExecutorConfig {
     private static final int FULL_PROCESSORS = Runtime.getRuntime().availableProcessors();
     private static volatile ExecutorService executorService;
@@ -43,7 +46,7 @@ public class ExecutorConfig {
 
     private static ExecutorService newThreadPool(){
         int corePool = Math.max(4, FULL_PROCESSORS);
-        System.out.println("线程数量：" + corePool);
+        log.info("线程数量：" + corePool);
         return new ThreadPoolExecutor(
                 corePool,
                 corePool,
